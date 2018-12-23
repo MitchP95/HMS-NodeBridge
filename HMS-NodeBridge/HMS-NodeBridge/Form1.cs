@@ -10,11 +10,20 @@ using System.Windows.Forms;
 
 namespace HMS_NodeBridge
 {
-    public partial class Form1 : Form
+    public partial class NodeBridge : Form
     {
-        public Form1()
+        public NodeBridge()
         {
             InitializeComponent();
+        }
+
+        private void BT_AddNode_Click(object sender, EventArgs e)
+        {
+            Panel newPanel = new Panel();
+            newPanel.Name = "Node1Panel";
+            newPanel.BorderStyle = BorderStyle.FixedSingle;
+
+            nodeFlowLayoutPanel.Controls.Add(newPanel);
         }
     }
 }
