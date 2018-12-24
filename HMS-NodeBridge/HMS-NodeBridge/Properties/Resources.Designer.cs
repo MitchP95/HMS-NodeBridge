@@ -63,6 +63,26 @@ namespace HMS_NodeBridge.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _45050754_abstract_background_light_red_color {
+            get {
+                object obj = ResourceManager.GetObject("45050754-abstract-background-light-red-color", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _45202782_1336614119806943_3940037044109049856_n {
+            get {
+                object obj = ResourceManager.GetObject("45202782_1336614119806943_3940037044109049856_n", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _5957bd2767d5cad {
             get {
                 object obj = ResourceManager.GetObject("5957bd2767d5cad", resourceCulture);

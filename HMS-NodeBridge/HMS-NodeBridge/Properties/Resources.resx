@@ -118,16 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="5957bd2767d5cad" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\5957bd2767d5cad.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="background1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\background1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="abstract-background-with-a-watercolor-texture_1048-2144" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\abstract-background-with-a-watercolor-texture_1048-2144.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="45050754-abstract-background-light-red-color" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\45050754-abstract-background-light-red-color.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="digital-water_bkp5ok-zs__F0000" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\digital-water_bkp5ok-zs__F0000.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="5957bd2767d5cad" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\5957bd2767d5cad.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="45202782_1336614119806943_3940037044109049856_n" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\45202782_1336614119806943_3940037044109049856_n.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
