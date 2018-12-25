@@ -79,8 +79,12 @@ namespace HMS_NodeBridge
 
         private void BT_AddNode_Click(object sender, EventArgs e)
         {
-            //Spawn new window asking for Node SN
-            //Ask DataHub to send Tx to node specified above
+            new AddNodeWindow().ShowDialog(); //Spawn new window asking for Node SN
+            int NewSN = AddNodeWindow.NodeSN; //Contains a valid structure SN, or -1 for cancellation
+            if (NewSN == -1) return;
+
+            //Check if SN already exists
+            //Ask DataHub to send handshake Tx to NewSN
             //If proper rx, add node and update parameters
             int NodePanelNum = addNewNodePanel();      //Create new panel/embedded objects in flowlayoutpanel
                                                        //Number returned is the panel reference number IF NEEDED
