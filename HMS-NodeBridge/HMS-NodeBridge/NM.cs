@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace HMS_NodeBridge
 {
     public enum DataType { Temperature, Humidity }
-    public enum ErrorMsg { TestError }
+    public enum ErrorMsg { TestError, Inactive, WaitingforInit }
 
     class NM
     {

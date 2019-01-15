@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddNodeWindow));
             this.BT_Confirm = new System.Windows.Forms.Button();
             this.TB_NodeSN = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -82,8 +83,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TB_NodeSN);
             this.Controls.Add(this.BT_Confirm);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddNodeWindow";
             this.Text = "Add New Node";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddNodeWindow_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

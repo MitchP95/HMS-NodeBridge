@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Net;
+using System.Net.Sockets;
 
 namespace HMS_NodeBridge
 {
@@ -84,11 +87,57 @@ namespace HMS_NodeBridge
             if (NewSN == -1) return;
 
             //Check if SN already exists
+            foreach (KeyValuePair<int, NM.Node> node in NM.NodeDict)
+            {
+                if(NM.NodeDict[node.Key].SN == NewSN)
+                {
+                    MessageBox.Show("A Node of this Serial Number already exists.");
+                    return;
+                }
+            }
+
             //Ask DataHub to send handshake Tx to NewSN
+            if (!CM.HUBRequest_AddNode(NewSN))
+            {
+                MessageBox.Show("The Node could not be reached.");
+                return;
+            }
+
             //If proper rx, add node and update parameters
             int NodePanelNum = addNewNodePanel();      //Create new panel/embedded objects in flowlayoutpanel
-                                                       //Number returned is the panel reference number IF NEEDED
-            //Make node object's NodePanelNumber equal to the above
+
+            //Create an object for the new node - Update will come from form refresh, no data yet
+            NM.addNewNode(NewSN);
+
+            //Update node with blank data to be displayed until updated
+            //NM.updateNode(NewSN, "Node"+NewSN.ToString(), null, null,  )
+
+            //Make node object's NodePanelNumber equal to the above            
+        }
+
+        private void TEST_BT_ConnectHUB_Click(object sender, EventArgs e)
+        {            
+            Int32 port = 12345;
+            TcpClient client = new TcpClient("192.168.1.151", port);
+
+            Byte[] data = System.Text.Encoding.ASCII.GetBytes("Testing");
+
+            NetworkStream stream = client.GetStream();
+
+            stream.Write(data, 0, data.Length);
+
+            TEST_RTB_ReceivedMsg.Text = ("Sent.\n");
+
+            data = new byte[1024];
+
+            String responseData = String.Empty;
+
+            Int32 bytes = stream.Read(data, 0, data.Length);
+            responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
+            TEST_RTB_ReceivedMsg.Text = "Received:\n";
+
+            stream.Close();
+            client.Close();
         }
     }
 }

@@ -13,6 +13,7 @@ namespace HMS_NodeBridge
     public partial class AddNodeWindow : Form
     {
         public static int NodeSN = 0;
+        private static bool AddNode = false;
 
         public AddNodeWindow()
         {
@@ -28,8 +29,12 @@ namespace HMS_NodeBridge
         private void BT_Confirm_Click(object sender, EventArgs e)
         {
             string SNtext = TB_NodeSN.Text;
-            int SN;            
-            if (SNtext.Substring(0, 2) == "SN") SNtext = SNtext.Substring(2);   //Remove SN characters if present
+            int SN;
+            try
+            {
+                if (SNtext.Substring(0, 2) == "SN") SNtext = SNtext.Substring(2);   //Remove SN characters if present
+            }
+            catch { }            
 
             try { SN = Convert.ToInt32(SNtext); }
             catch
@@ -39,9 +44,16 @@ namespace HMS_NodeBridge
             }
 
             NodeSN = SN;
+            AddNode = true;
 
             //On Success
             if(SN != 0)this.Close();
+        }
+
+        private void AddNodeWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {            
+            if(!AddNode) NodeSN = -1;
+            AddNode = false;            
         }
     }
 }
