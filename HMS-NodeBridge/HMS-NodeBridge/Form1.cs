@@ -118,9 +118,9 @@ namespace HMS_NodeBridge
         private void TEST_BT_ConnectHUB_Click(object sender, EventArgs e)
         {            
             Int32 port = 12345;
-            TcpClient client = new TcpClient("192.168.1.151", port);
+            TcpClient client = new TcpClient(TEST_TB_InputIP.Text, port);
 
-            Byte[] data = System.Text.Encoding.ASCII.GetBytes("Testing");
+            Byte[] data = System.Text.Encoding.ASCII.GetBytes("801231995");
 
             NetworkStream stream = client.GetStream();
 
@@ -134,7 +134,55 @@ namespace HMS_NodeBridge
 
             Int32 bytes = stream.Read(data, 0, data.Length);
             responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
-            TEST_RTB_ReceivedMsg.Text = "Received:\n";
+            TEST_RTB_ReceivedMsg.Text = responseData;
+
+            stream.Close();
+            client.Close();
+        }
+
+        private void TEST_BT_SendMessage_Click(object sender, EventArgs e)
+        {
+            Int32 port = 12345;
+            TcpClient client = new TcpClient(TEST_TB_InputIP.Text, port);
+
+            Byte[] data = System.Text.Encoding.ASCII.GetBytes(TEST_RTB_MessagetoSend.Text);
+
+            NetworkStream stream = client.GetStream();
+
+            stream.Write(data, 0, data.Length);
+
+            TEST_RTB_ReceivedMsg.Text = ("Sent.\n");
+
+            data = new byte[1024];
+
+            String responseData = String.Empty;
+
+            Int32 bytes = stream.Read(data, 0, data.Length);
+            responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
+            TEST_RTB_ReceivedMsg.Text = responseData;
+
+            stream.Close();
+            client.Close();
+        }
+
+        private void BT_ConnectDataHub_Click(object sender, EventArgs e)
+        {
+            Int32 port = 12345;
+            TcpClient client = new TcpClient(TEST_TB_InputIP.Text, port);
+
+            Byte[] data = System.Text.Encoding.ASCII.GetBytes("801231995");
+
+            NetworkStream stream = client.GetStream();
+
+            stream.Write(data, 0, data.Length);            
+
+            data = new byte[1024];
+
+            String responseData = String.Empty;
+
+            Int32 bytes = stream.Read(data, 0, data.Length);
+            responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
+            TEST_RTB_ReceivedMsg.Text = responseData;
 
             stream.Close();
             client.Close();

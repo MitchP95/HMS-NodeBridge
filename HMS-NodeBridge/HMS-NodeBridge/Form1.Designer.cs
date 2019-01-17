@@ -56,11 +56,13 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.HiddenBGPanel = new System.Windows.Forms.Panel();
-            this.TEST_BT_ConnectHUB = new System.Windows.Forms.Button();
-            this.TEST_TB_InputIP = new System.Windows.Forms.TextBox();
-            this.TEST_RTB_MessagetoSend = new System.Windows.Forms.RichTextBox();
             this.TEST_RTB_ReceivedMsg = new System.Windows.Forms.RichTextBox();
+            this.TEST_RTB_MessagetoSend = new System.Windows.Forms.RichTextBox();
+            this.TEST_TB_InputIP = new System.Windows.Forms.TextBox();
+            this.TEST_BT_ConnectHUB = new System.Windows.Forms.Button();
+            this.HiddenBGPanel = new System.Windows.Forms.Panel();
+            this.TEST_BT_SendMessage = new System.Windows.Forms.Button();
+            this.BT_ConnectDataHub = new System.Windows.Forms.Button();
             this.tabControl_HMS.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.P_MainNMPanel.SuspendLayout();
@@ -90,7 +92,7 @@
             this.tabPage1.Controls.Add(this.P_MainNMPanel);
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1134, 565);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Node Management";
@@ -104,6 +106,7 @@
             this.P_MainNMPanel.BackgroundImage = global::HMS_NodeBridge.Properties.Resources._5957bd2767d5cad;
             this.P_MainNMPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.P_MainNMPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.P_MainNMPanel.Controls.Add(this.BT_ConnectDataHub);
             this.P_MainNMPanel.Controls.Add(this.nodeFlowLayoutPanel);
             this.P_MainNMPanel.Controls.Add(this.richTextBox1);
             this.P_MainNMPanel.Controls.Add(this.panel3);
@@ -357,7 +360,7 @@
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(1134, 565);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Data";
@@ -374,6 +377,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.TEST_BT_SendMessage);
             this.tabPage4.Controls.Add(this.TEST_RTB_ReceivedMsg);
             this.tabPage4.Controls.Add(this.TEST_RTB_MessagetoSend);
             this.tabPage4.Controls.Add(this.TEST_TB_InputIP);
@@ -385,14 +389,29 @@
             this.tabPage4.Text = "Testing Controls";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // HiddenBGPanel
+            // TEST_RTB_ReceivedMsg
             // 
-            this.HiddenBGPanel.BackgroundImage = global::HMS_NodeBridge.Properties.Resources._45050754_abstract_background_light_red_color;
-            this.HiddenBGPanel.Location = new System.Drawing.Point(658, 12);
-            this.HiddenBGPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.HiddenBGPanel.Name = "HiddenBGPanel";
-            this.HiddenBGPanel.Size = new System.Drawing.Size(300, 154);
-            this.HiddenBGPanel.TabIndex = 3;
+            this.TEST_RTB_ReceivedMsg.Location = new System.Drawing.Point(621, 62);
+            this.TEST_RTB_ReceivedMsg.Name = "TEST_RTB_ReceivedMsg";
+            this.TEST_RTB_ReceivedMsg.Size = new System.Drawing.Size(358, 96);
+            this.TEST_RTB_ReceivedMsg.TabIndex = 3;
+            this.TEST_RTB_ReceivedMsg.Text = "";
+            // 
+            // TEST_RTB_MessagetoSend
+            // 
+            this.TEST_RTB_MessagetoSend.Location = new System.Drawing.Point(257, 62);
+            this.TEST_RTB_MessagetoSend.Name = "TEST_RTB_MessagetoSend";
+            this.TEST_RTB_MessagetoSend.Size = new System.Drawing.Size(358, 96);
+            this.TEST_RTB_MessagetoSend.TabIndex = 2;
+            this.TEST_RTB_MessagetoSend.Text = "8012345";
+            // 
+            // TEST_TB_InputIP
+            // 
+            this.TEST_TB_InputIP.Location = new System.Drawing.Point(257, 25);
+            this.TEST_TB_InputIP.Name = "TEST_TB_InputIP";
+            this.TEST_TB_InputIP.Size = new System.Drawing.Size(358, 26);
+            this.TEST_TB_InputIP.TabIndex = 1;
+            this.TEST_TB_InputIP.Text = "192.168.1.107";
             // 
             // TEST_BT_ConnectHUB
             // 
@@ -404,29 +423,37 @@
             this.TEST_BT_ConnectHUB.UseVisualStyleBackColor = true;
             this.TEST_BT_ConnectHUB.Click += new System.EventHandler(this.TEST_BT_ConnectHUB_Click);
             // 
-            // TEST_TB_InputIP
+            // HiddenBGPanel
             // 
-            this.TEST_TB_InputIP.Location = new System.Drawing.Point(257, 25);
-            this.TEST_TB_InputIP.Name = "TEST_TB_InputIP";
-            this.TEST_TB_InputIP.Size = new System.Drawing.Size(358, 26);
-            this.TEST_TB_InputIP.TabIndex = 1;
-            this.TEST_TB_InputIP.Text = "192.168.1.151";
+            this.HiddenBGPanel.BackgroundImage = global::HMS_NodeBridge.Properties.Resources._45050754_abstract_background_light_red_color;
+            this.HiddenBGPanel.Location = new System.Drawing.Point(658, 12);
+            this.HiddenBGPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.HiddenBGPanel.Name = "HiddenBGPanel";
+            this.HiddenBGPanel.Size = new System.Drawing.Size(300, 154);
+            this.HiddenBGPanel.TabIndex = 3;
             // 
-            // TEST_RTB_MessagetoSend
+            // TEST_BT_SendMessage
             // 
-            this.TEST_RTB_MessagetoSend.Location = new System.Drawing.Point(257, 62);
-            this.TEST_RTB_MessagetoSend.Name = "TEST_RTB_MessagetoSend";
-            this.TEST_RTB_MessagetoSend.Size = new System.Drawing.Size(358, 96);
-            this.TEST_RTB_MessagetoSend.TabIndex = 2;
-            this.TEST_RTB_MessagetoSend.Text = "";
+            this.TEST_BT_SendMessage.Location = new System.Drawing.Point(24, 62);
+            this.TEST_BT_SendMessage.Name = "TEST_BT_SendMessage";
+            this.TEST_BT_SendMessage.Size = new System.Drawing.Size(227, 36);
+            this.TEST_BT_SendMessage.TabIndex = 4;
+            this.TEST_BT_SendMessage.Text = "Send Message";
+            this.TEST_BT_SendMessage.UseVisualStyleBackColor = true;
+            this.TEST_BT_SendMessage.Click += new System.EventHandler(this.TEST_BT_SendMessage_Click);
             // 
-            // TEST_RTB_ReceivedMsg
+            // BT_ConnectDataHub
             // 
-            this.TEST_RTB_ReceivedMsg.Location = new System.Drawing.Point(621, 62);
-            this.TEST_RTB_ReceivedMsg.Name = "TEST_RTB_ReceivedMsg";
-            this.TEST_RTB_ReceivedMsg.Size = new System.Drawing.Size(358, 96);
-            this.TEST_RTB_ReceivedMsg.TabIndex = 3;
-            this.TEST_RTB_ReceivedMsg.Text = "";
+            this.BT_ConnectDataHub.BackColor = System.Drawing.Color.Gold;
+            this.BT_ConnectDataHub.FlatAppearance.BorderSize = 0;
+            this.BT_ConnectDataHub.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_ConnectDataHub.Location = new System.Drawing.Point(790, 463);
+            this.BT_ConnectDataHub.Name = "BT_ConnectDataHub";
+            this.BT_ConnectDataHub.Size = new System.Drawing.Size(332, 42);
+            this.BT_ConnectDataHub.TabIndex = 9;
+            this.BT_ConnectDataHub.Text = "Connect to DataHub";
+            this.BT_ConnectDataHub.UseVisualStyleBackColor = false;
+            this.BT_ConnectDataHub.Click += new System.EventHandler(this.BT_ConnectDataHub_Click);
             // 
             // NodeBridge
             // 
@@ -489,6 +516,8 @@
         private System.Windows.Forms.Button TEST_BT_ConnectHUB;
         private System.Windows.Forms.RichTextBox TEST_RTB_MessagetoSend;
         private System.Windows.Forms.RichTextBox TEST_RTB_ReceivedMsg;
+        private System.Windows.Forms.Button TEST_BT_SendMessage;
+        private System.Windows.Forms.Button BT_ConnectDataHub;
     }
 }
 
