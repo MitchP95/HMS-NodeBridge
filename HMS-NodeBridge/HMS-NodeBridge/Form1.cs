@@ -65,6 +65,9 @@ namespace HMS_NodeBridge
             newButton.Height = 20;
             newButton.Width = 90;
             newPanel.Controls.Add(newButton);
+            newButton.Click += newPanelButton_Click;
+            newButton.Tag = NM.NodeDict.Count;
+            
 
             CheckBox newCheckBox = new CheckBox();
             newCheckBox.Name = "NodeCheckBox" + NM.NodeDict.Count.ToString();
@@ -78,6 +81,24 @@ namespace HMS_NodeBridge
             nodeFlowLayoutPanel.Controls.Add(newPanel);
 
             return NM.NodeDict.Count;
+        }
+
+        private void newPanelButton_Click(object sender, EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            foreach (KeyValuePair<int, NM.Node> node in NM.NodeDict)
+            {
+                if (NM.NodeDict[node.Key].PanelNum.ToString() == clickedButton.Tag.ToString())
+                {
+                    LB_Main_NodeName.Text = NM.NodeDict[node.Key].NodeName;
+                    LB_Main_SN.Text = "SN" + NM.NodeDict[node.Key].SN.ToString();
+                    LB_Main_Battery.Text = "Battery Level: " + NM.NodeDict[node.Key].BatteryLevel.ToString();
+                    LB_Main_SensorTypes.Text = NM.NodeDict[node.Key].DataTypes.ToString();                    
+
+                    LB_Main_WarnS1.Text = NM.NodeDict[node.Key].LowLimit.ToString() + " to " + NM.NodeDict[node.Key].HighLimit.ToString();
+                }
+            }
+
         }
 
         private void BT_AddNode_Click(object sender, EventArgs e)
@@ -191,6 +212,48 @@ namespace HMS_NodeBridge
         private void TEST_BT_Demo1_Click(object sender, EventArgs e)
         {
             //Add 3 nodes - all using temperature
+            NM.addNewNode(30000);
+            NM.updateNode(30000, "North", 100, new List<double[]>(), new List<ErrorMsg>(), new List<DataType>(), false, false, 55, 10);
+            int NodePanelNum1 = addNewNodePanel();
+
+            NM.addNewNode(30001);
+            NM.updateNode(30001, "South", 80, new List<double[]>(), new List<ErrorMsg>(), new List<DataType>(), false, false, 55, 10);
+            int NodePanelNum2 = addNewNodePanel();
+
+            NM.addNewNode(30002);
+            NM.updateNode(30002, "West", 60, new List<double[]>(), new List<ErrorMsg>(), new List<DataType>(), false, false, 55, 10);
+            int NodePanelNum3 = addNewNodePanel();
+
+            NM.NodeDict[30000].PanelNum = NodePanelNum1;
+            NM.NodeDict[30001].PanelNum = NodePanelNum2;
+            NM.NodeDict[30002].PanelNum = NodePanelNum3;
+
+            NM.NodeDict[30000].DataTypes.Add(DataType.Temperature);
+            NM.NodeDict[30001].DataTypes.Add(DataType.Temperature);
+            NM.NodeDict[30002].DataTypes.Add(DataType.Temperature);
+            NM.NodeDict[30000].DataTypes.Add(DataType.Humidity);
+
+            Label tb30000name = nodeFlowLayoutPanel.Controls.Find("NodeLabel1", true).FirstOrDefault() as Label;
+            tb30000name.Text = NM.NodeDict[30000].NodeName;
+            Label tb30001name = nodeFlowLayoutPanel.Controls.Find("NodeLabel2", true).FirstOrDefault() as Label;
+            tb30001name.Text = NM.NodeDict[30001].NodeName;
+            Label tb30002name = nodeFlowLayoutPanel.Controls.Find("NodeLabel3", true).FirstOrDefault() as Label;
+            tb30002name.Text = NM.NodeDict[30002].NodeName;
+
+            Label tb30000SN = nodeFlowLayoutPanel.Controls.Find("NodeSNLabel1", true).FirstOrDefault() as Label;
+            tb30000SN.Text = "SN" + NM.NodeDict[30000].SN.ToString();
+            Label tb30001SN = nodeFlowLayoutPanel.Controls.Find("NodeSNLabel2", true).FirstOrDefault() as Label;
+            tb30001SN.Text = "SN" + NM.NodeDict[30001].SN.ToString();
+            Label tb30002SN = nodeFlowLayoutPanel.Controls.Find("NodeSNLabel3", true).FirstOrDefault() as Label;
+            tb30002SN.Text = "SN" + NM.NodeDict[30002].SN.ToString();
+
+            RichTextBox rtb30000colorstatus = nodeFlowLayoutPanel.Controls.Find("NodeColorRTB1", true).FirstOrDefault() as RichTextBox;
+            rtb30000colorstatus.BackColor = Color.Lime;
+            RichTextBox rtb30001colorstatus = nodeFlowLayoutPanel.Controls.Find("NodeColorRTB2", true).FirstOrDefault() as RichTextBox;
+            rtb30001colorstatus.BackColor = Color.Lime;
+            RichTextBox rtb30002colorstatus = nodeFlowLayoutPanel.Controls.Find("NodeColorRTB3", true).FirstOrDefault() as RichTextBox;
+            rtb30002colorstatus.BackColor = Color.Lime;
+
             //Start new data update thread(DEMO ONLY)
             //      Push new node data on 3 sec cycle
             //     
@@ -202,7 +265,5 @@ namespace HMS_NodeBridge
         {
 
         }
-
-        
     }
 }
