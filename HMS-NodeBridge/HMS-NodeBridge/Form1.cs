@@ -187,5 +187,22 @@ namespace HMS_NodeBridge
             stream.Close();
             client.Close();
         }
+
+        private void TEST_BT_Demo1_Click(object sender, EventArgs e)
+        {
+            //Add 3 nodes - all using temperature
+            //Start new data update thread(DEMO ONLY)
+            //      Push new node data on 3 sec cycle
+            //     
+            //Start form update thread cycle at 0.5s
+            //
+        }
+
+        private void splitter1_Splitteroved(object sender, SplitterEventArgs e)
+        {
+
+        }
+
+        
     }
 }
