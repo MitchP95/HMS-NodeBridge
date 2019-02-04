@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NodeBridge));
             this.tabControl_HMS = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -36,6 +36,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.BT_ConnectDataHub = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.LB_Main_SN = new System.Windows.Forms.Label();
             this.LB_Main_WarnS3 = new System.Windows.Forms.Label();
             this.LB_Main_WarnS2 = new System.Windows.Forms.Label();
@@ -58,7 +59,10 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.CartesianChart_Data = new LiveCharts.WinForms.CartesianChart();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.CB_Graph_SeriesOption = new System.Windows.Forms.ComboBox();
             this.button8 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -68,9 +72,9 @@
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.CB_Graph_Style = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.CB_Graph_DataSource = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.splitter2 = new System.Windows.Forms.Splitter();
@@ -82,8 +86,9 @@
             this.TEST_TB_InputIP = new System.Windows.Forms.TextBox();
             this.TEST_BT_ConnectHUB = new System.Windows.Forms.Button();
             this.HiddenBGPanel = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.BW_DEMO1_DataStream = new System.ComponentModel.BackgroundWorker();
+            this.BT_DEMO_AddNewData = new System.Windows.Forms.Button();
+            this.Timer_Updates = new System.Windows.Forms.Timer(this.components);
             this.tabControl_HMS.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.P_MainNMPanel.SuspendLayout();
@@ -92,11 +97,10 @@
             this.panel2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            this.panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl_HMS
@@ -109,20 +113,21 @@
             this.tabControl_HMS.Controls.Add(this.tabPage3);
             this.tabControl_HMS.Controls.Add(this.tabPage4);
             this.tabControl_HMS.Location = new System.Drawing.Point(11, 8);
-            this.tabControl_HMS.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl_HMS.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl_HMS.Name = "tabControl_HMS";
             this.tabControl_HMS.SelectedIndex = 0;
             this.tabControl_HMS.Size = new System.Drawing.Size(761, 389);
             this.tabControl_HMS.TabIndex = 0;
+            this.tabControl_HMS.SelectedIndexChanged += new System.EventHandler(this.tabControl_HMS_SelectedIndexChanged);
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
             this.tabPage1.Controls.Add(this.P_MainNMPanel);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage1.Size = new System.Drawing.Size(753, 363);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Node Management";
@@ -140,7 +145,7 @@
             this.P_MainNMPanel.Controls.Add(this.nodeFlowLayoutPanel);
             this.P_MainNMPanel.Controls.Add(this.splitter1);
             this.P_MainNMPanel.Location = new System.Drawing.Point(0, 0);
-            this.P_MainNMPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.P_MainNMPanel.Margin = new System.Windows.Forms.Padding(2);
             this.P_MainNMPanel.Name = "P_MainNMPanel";
             this.P_MainNMPanel.Size = new System.Drawing.Size(760, 369);
             this.P_MainNMPanel.TabIndex = 2;
@@ -168,7 +173,7 @@
             this.BT_ConnectDataHub.FlatAppearance.BorderSize = 0;
             this.BT_ConnectDataHub.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BT_ConnectDataHub.Location = new System.Drawing.Point(3, 304);
-            this.BT_ConnectDataHub.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BT_ConnectDataHub.Margin = new System.Windows.Forms.Padding(2);
             this.BT_ConnectDataHub.Name = "BT_ConnectDataHub";
             this.BT_ConnectDataHub.Size = new System.Drawing.Size(221, 27);
             this.BT_ConnectDataHub.TabIndex = 17;
@@ -179,6 +184,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.Transparent;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.LB_Main_SN);
             this.panel3.Controls.Add(this.LB_Main_WarnS3);
             this.panel3.Controls.Add(this.LB_Main_WarnS2);
@@ -190,6 +196,17 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(219, 146);
             this.panel3.TabIndex = 16;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 50);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(92, 15);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Sensor Type(s):";
             // 
             // LB_Main_SN
             // 
@@ -262,17 +279,16 @@
             this.LB_Main_SensorTypes.AutoSize = true;
             this.LB_Main_SensorTypes.BackColor = System.Drawing.Color.Transparent;
             this.LB_Main_SensorTypes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LB_Main_SensorTypes.Location = new System.Drawing.Point(3, 48);
+            this.LB_Main_SensorTypes.Location = new System.Drawing.Point(3, 65);
             this.LB_Main_SensorTypes.Name = "LB_Main_SensorTypes";
-            this.LB_Main_SensorTypes.Size = new System.Drawing.Size(84, 15);
+            this.LB_Main_SensorTypes.Size = new System.Drawing.Size(0, 15);
             this.LB_Main_SensorTypes.TabIndex = 7;
-            this.LB_Main_SensorTypes.Text = "Sensor Types:";
             // 
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Location = new System.Drawing.Point(174, 14);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(35, 24);
             this.button4.TabIndex = 14;
@@ -296,7 +312,7 @@
             // button7
             // 
             this.button7.Location = new System.Drawing.Point(3, 76);
-            this.button7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(211, 24);
             this.button7.TabIndex = 14;
@@ -306,7 +322,7 @@
             // button6
             // 
             this.button6.Location = new System.Drawing.Point(3, 20);
-            this.button6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(111, 24);
             this.button6.TabIndex = 13;
@@ -327,17 +343,18 @@
             // BT_Main_ViewNodeData
             // 
             this.BT_Main_ViewNodeData.Location = new System.Drawing.Point(114, 20);
-            this.BT_Main_ViewNodeData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BT_Main_ViewNodeData.Margin = new System.Windows.Forms.Padding(2);
             this.BT_Main_ViewNodeData.Name = "BT_Main_ViewNodeData";
             this.BT_Main_ViewNodeData.Size = new System.Drawing.Size(103, 24);
             this.BT_Main_ViewNodeData.TabIndex = 6;
             this.BT_Main_ViewNodeData.Text = "View Data Set(s)";
             this.BT_Main_ViewNodeData.UseVisualStyleBackColor = true;
+            this.BT_Main_ViewNodeData.Click += new System.EventHandler(this.BT_Main_ViewNodeData_Click);
             // 
             // BT_Main_EditWarnPar
             // 
             this.BT_Main_EditWarnPar.Location = new System.Drawing.Point(3, 48);
-            this.BT_Main_EditWarnPar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BT_Main_EditWarnPar.Margin = new System.Windows.Forms.Padding(2);
             this.BT_Main_EditWarnPar.Name = "BT_Main_EditWarnPar";
             this.BT_Main_EditWarnPar.Size = new System.Drawing.Size(211, 24);
             this.BT_Main_EditWarnPar.TabIndex = 5;
@@ -358,7 +375,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(136, 335);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(86, 24);
             this.button2.TabIndex = 11;
@@ -368,7 +385,7 @@
             // BT_AddNode
             // 
             this.BT_AddNode.Location = new System.Drawing.Point(57, 335);
-            this.BT_AddNode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BT_AddNode.Margin = new System.Windows.Forms.Padding(2);
             this.BT_AddNode.Name = "BT_AddNode";
             this.BT_AddNode.Size = new System.Drawing.Size(73, 24);
             this.BT_AddNode.TabIndex = 10;
@@ -393,7 +410,7 @@
             this.splitter1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Right;
             this.splitter1.Location = new System.Drawing.Point(526, 0);
-            this.splitter1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitter1.Margin = new System.Windows.Forms.Padding(2);
             this.splitter1.Name = "splitter1";
             this.splitter1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.splitter1.Size = new System.Drawing.Size(230, 365);
@@ -404,9 +421,9 @@
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage2.Size = new System.Drawing.Size(753, 363);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Data";
@@ -416,7 +433,7 @@
             // 
             this.tabPage3.Controls.Add(this.panel1);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(753, 363);
             this.tabPage3.TabIndex = 2;
@@ -436,28 +453,64 @@
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.splitter2);
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(760, 369);
             this.panel1.TabIndex = 3;
+            // 
+            // panel7
+            // 
+            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel7.Controls.Add(this.CartesianChart_Data);
+            this.panel7.Location = new System.Drawing.Point(-2, -2);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(527, 363);
+            this.panel7.TabIndex = 20;
+            // 
+            // CartesianChart_Data
+            // 
+            this.CartesianChart_Data.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CartesianChart_Data.Location = new System.Drawing.Point(0, 0);
+            this.CartesianChart_Data.Name = "CartesianChart_Data";
+            this.CartesianChart_Data.Size = new System.Drawing.Size(527, 360);
+            this.CartesianChart_Data.TabIndex = 0;
+            this.CartesianChart_Data.Text = "cartesianChart1";
             // 
             // panel5
             // 
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.BackColor = System.Drawing.Color.Transparent;
+            this.panel5.Controls.Add(this.BT_DEMO_AddNewData);
+            this.panel5.Controls.Add(this.CB_Graph_SeriesOption);
             this.panel5.Controls.Add(this.button8);
             this.panel5.Controls.Add(this.button1);
             this.panel5.Controls.Add(this.panel6);
-            this.panel5.Controls.Add(this.comboBox6);
+            this.panel5.Controls.Add(this.CB_Graph_Style);
             this.panel5.Controls.Add(this.label14);
-            this.panel5.Controls.Add(this.comboBox1);
+            this.panel5.Controls.Add(this.CB_Graph_DataSource);
             this.panel5.Controls.Add(this.label11);
             this.panel5.Controls.Add(this.label10);
             this.panel5.Location = new System.Drawing.Point(527, -2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(224, 378);
             this.panel5.TabIndex = 9;
+            // 
+            // CB_Graph_SeriesOption
+            // 
+            this.CB_Graph_SeriesOption.FormattingEnabled = true;
+            this.CB_Graph_SeriesOption.Items.AddRange(new object[] {
+            "Single Series",
+            "Seperate Series"});
+            this.CB_Graph_SeriesOption.Location = new System.Drawing.Point(98, 68);
+            this.CB_Graph_SeriesOption.Name = "CB_Graph_SeriesOption";
+            this.CB_Graph_SeriesOption.Size = new System.Drawing.Size(118, 21);
+            this.CB_Graph_SeriesOption.TabIndex = 20;
+            this.CB_Graph_SeriesOption.Text = "Seperate Series";
             // 
             // button8
             // 
@@ -567,17 +620,18 @@
             this.label13.TabIndex = 18;
             this.label13.Text = "Secondary Data Type:";
             // 
-            // comboBox6
+            // CB_Graph_Style
             // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Items.AddRange(new object[] {
+            this.CB_Graph_Style.FormattingEnabled = true;
+            this.CB_Graph_Style.Items.AddRange(new object[] {
+            "Scatter",
             "Line",
             "Bar"});
-            this.comboBox6.Location = new System.Drawing.Point(51, 123);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(121, 21);
-            this.comboBox6.TabIndex = 17;
-            this.comboBox6.Text = "Line";
+            this.CB_Graph_Style.Location = new System.Drawing.Point(51, 123);
+            this.CB_Graph_Style.Name = "CB_Graph_Style";
+            this.CB_Graph_Style.Size = new System.Drawing.Size(121, 21);
+            this.CB_Graph_Style.TabIndex = 17;
+            this.CB_Graph_Style.Text = "Line";
             // 
             // label14
             // 
@@ -590,23 +644,24 @@
             this.label14.TabIndex = 16;
             this.label14.Text = "Graph Style";
             // 
-            // comboBox1
+            // CB_Graph_DataSource
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.CB_Graph_DataSource.FormattingEnabled = true;
+            this.CB_Graph_DataSource.Items.AddRange(new object[] {
             "All Nodes"});
-            this.comboBox1.Location = new System.Drawing.Point(51, 68);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 15;
-            this.comboBox1.Text = "All Nodes";
+            this.CB_Graph_DataSource.Location = new System.Drawing.Point(7, 68);
+            this.CB_Graph_DataSource.Name = "CB_Graph_DataSource";
+            this.CB_Graph_DataSource.Size = new System.Drawing.Size(85, 21);
+            this.CB_Graph_DataSource.TabIndex = 15;
+            this.CB_Graph_DataSource.Text = "All Nodes";
+            this.CB_Graph_DataSource.DropDown += new System.EventHandler(this.CB_Graph_DataSource_DropDown);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(48, 50);
+            this.label11.Location = new System.Drawing.Point(4, 50);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(102, 15);
             this.label11.TabIndex = 14;
@@ -628,7 +683,7 @@
             this.splitter2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitter2.Dock = System.Windows.Forms.DockStyle.Right;
             this.splitter2.Location = new System.Drawing.Point(526, 0);
-            this.splitter2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitter2.Margin = new System.Windows.Forms.Padding(2);
             this.splitter2.Name = "splitter2";
             this.splitter2.Size = new System.Drawing.Size(230, 365);
             this.splitter2.TabIndex = 0;
@@ -643,7 +698,7 @@
             this.tabPage4.Controls.Add(this.TEST_TB_InputIP);
             this.tabPage4.Controls.Add(this.TEST_BT_ConnectHUB);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(753, 363);
             this.tabPage4.TabIndex = 3;
@@ -653,7 +708,7 @@
             // TEST_BT_Demo1
             // 
             this.TEST_BT_Demo1.Location = new System.Drawing.Point(16, 144);
-            this.TEST_BT_Demo1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TEST_BT_Demo1.Margin = new System.Windows.Forms.Padding(2);
             this.TEST_BT_Demo1.Name = "TEST_BT_Demo1";
             this.TEST_BT_Demo1.Size = new System.Drawing.Size(151, 23);
             this.TEST_BT_Demo1.TabIndex = 5;
@@ -664,7 +719,7 @@
             // TEST_BT_SendMessage
             // 
             this.TEST_BT_SendMessage.Location = new System.Drawing.Point(16, 40);
-            this.TEST_BT_SendMessage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TEST_BT_SendMessage.Margin = new System.Windows.Forms.Padding(2);
             this.TEST_BT_SendMessage.Name = "TEST_BT_SendMessage";
             this.TEST_BT_SendMessage.Size = new System.Drawing.Size(151, 23);
             this.TEST_BT_SendMessage.TabIndex = 4;
@@ -675,7 +730,7 @@
             // TEST_RTB_ReceivedMsg
             // 
             this.TEST_RTB_ReceivedMsg.Location = new System.Drawing.Point(414, 40);
-            this.TEST_RTB_ReceivedMsg.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TEST_RTB_ReceivedMsg.Margin = new System.Windows.Forms.Padding(2);
             this.TEST_RTB_ReceivedMsg.Name = "TEST_RTB_ReceivedMsg";
             this.TEST_RTB_ReceivedMsg.Size = new System.Drawing.Size(240, 64);
             this.TEST_RTB_ReceivedMsg.TabIndex = 3;
@@ -684,7 +739,7 @@
             // TEST_RTB_MessagetoSend
             // 
             this.TEST_RTB_MessagetoSend.Location = new System.Drawing.Point(171, 40);
-            this.TEST_RTB_MessagetoSend.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TEST_RTB_MessagetoSend.Margin = new System.Windows.Forms.Padding(2);
             this.TEST_RTB_MessagetoSend.Name = "TEST_RTB_MessagetoSend";
             this.TEST_RTB_MessagetoSend.Size = new System.Drawing.Size(240, 64);
             this.TEST_RTB_MessagetoSend.TabIndex = 2;
@@ -693,7 +748,7 @@
             // TEST_TB_InputIP
             // 
             this.TEST_TB_InputIP.Location = new System.Drawing.Point(171, 16);
-            this.TEST_TB_InputIP.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TEST_TB_InputIP.Margin = new System.Windows.Forms.Padding(2);
             this.TEST_TB_InputIP.Name = "TEST_TB_InputIP";
             this.TEST_TB_InputIP.Size = new System.Drawing.Size(240, 20);
             this.TEST_TB_InputIP.TabIndex = 1;
@@ -702,7 +757,7 @@
             // TEST_BT_ConnectHUB
             // 
             this.TEST_BT_ConnectHUB.Location = new System.Drawing.Point(16, 13);
-            this.TEST_BT_ConnectHUB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TEST_BT_ConnectHUB.Margin = new System.Windows.Forms.Padding(2);
             this.TEST_BT_ConnectHUB.Name = "TEST_BT_ConnectHUB";
             this.TEST_BT_ConnectHUB.Size = new System.Drawing.Size(151, 23);
             this.TEST_BT_ConnectHUB.TabIndex = 0;
@@ -718,31 +773,26 @@
             this.HiddenBGPanel.Size = new System.Drawing.Size(200, 100);
             this.HiddenBGPanel.TabIndex = 3;
             // 
-            // panel7
+            // BW_DEMO1_DataStream
             // 
-            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel7.Controls.Add(this.chart1);
-            this.panel7.Location = new System.Drawing.Point(-2, -2);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(527, 363);
-            this.panel7.TabIndex = 20;
+            this.BW_DEMO1_DataStream.WorkerSupportsCancellation = true;
+            this.BW_DEMO1_DataStream.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BW_DEMO1_DataStream_DoWork);
+            this.BW_DEMO1_DataStream.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BW_DEMO1_DataStream_RunWorkerCompleted);
             // 
-            // chart1
+            // BT_DEMO_AddNewData
             // 
-            this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.chart1.BackColor = System.Drawing.Color.Ivory;
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            this.chart1.Location = new System.Drawing.Point(0, 2);
-            this.chart1.Name = "chart1";
-            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
-            this.chart1.Size = new System.Drawing.Size(527, 361);
-            this.chart1.TabIndex = 0;
-            this.chart1.Text = "chart1";
+            this.BT_DEMO_AddNewData.Location = new System.Drawing.Point(7, 325);
+            this.BT_DEMO_AddNewData.Name = "BT_DEMO_AddNewData";
+            this.BT_DEMO_AddNewData.Size = new System.Drawing.Size(209, 23);
+            this.BT_DEMO_AddNewData.TabIndex = 21;
+            this.BT_DEMO_AddNewData.Text = "Add New Data";
+            this.BT_DEMO_AddNewData.UseVisualStyleBackColor = true;
+            this.BT_DEMO_AddNewData.Click += new System.EventHandler(this.BT_DEMO_AddNewData_Click);
+            // 
+            // Timer_Updates
+            // 
+            this.Timer_Updates.Interval = 250;
+            this.Timer_Updates.Tick += new System.EventHandler(this.Timer_Updates_Tick);
             // 
             // NodeBridge
             // 
@@ -754,7 +804,7 @@
             this.Controls.Add(this.tabControl_HMS);
             this.Controls.Add(this.HiddenBGPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(795, 405);
             this.Name = "NodeBridge";
             this.Text = "Node Bridge";
@@ -769,14 +819,13 @@
             this.panel2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -828,15 +877,20 @@
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox CB_Graph_DataSource;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox CB_Graph_Style;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.Label label1;
+        private System.ComponentModel.BackgroundWorker BW_DEMO1_DataStream;
+        private System.Windows.Forms.ComboBox CB_Graph_SeriesOption;
+        private LiveCharts.WinForms.CartesianChart CartesianChart_Data;
+        private System.Windows.Forms.Button BT_DEMO_AddNewData;
+        private System.Windows.Forms.Timer Timer_Updates;
     }
 }
 

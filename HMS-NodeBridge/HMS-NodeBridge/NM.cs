@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,9 +10,11 @@ namespace HMS_NodeBridge
     public enum DataType { Temperature, Humidity }
     public enum ErrorMsg { TestError, Inactive, WaitingforInit }
 
-    class NM
+    public class NM
     {
         public static Dictionary<int, Node> NodeDict = new Dictionary<int, Node>();
+        public static DataTable dataTable = new DataTable();
+        
 
         public static void addNewNode(int NodeSN)
         {
@@ -29,13 +32,16 @@ namespace HMS_NodeBridge
             NodeDict.Remove(NodeSN);
         }
 
-        public static void updateNode(int NodeSN, string newNodeName, int? newBatteryLevel, List<double[]> newData, List<ErrorMsg> newErrorMessages,
-                                      List<DataType> newDataTypes, bool newInternalErrorFlag, bool newInactiveFlag, int newHighLimit,
-                                      int newLowLimit)
+        public static void updateNode(int NodeSN, string newNodeName, int? newBatteryLevel, List<double[]> newData, List<double[]> newData2, 
+                                        List<double[]> newData3, List<ErrorMsg> newErrorMessages,
+                                      List<DataType> newDataTypes, bool newInternalErrorFlag, bool newInactiveFlag, int? newHighLimit,
+                                      int? newLowLimit, int? newHighLimit2, int? newLowLimit2, int? newHighLimit3, int? newLowLimit3)
         {
             NodeDict[NodeSN].NodeName = newNodeName;
             NodeDict[NodeSN].BatteryLevel = newBatteryLevel;
             NodeDict[NodeSN].Data = newData;
+            NodeDict[NodeSN].Data2 = newData2;
+            NodeDict[NodeSN].Data3 = newData3;
             NodeDict[NodeSN].ErrorMessages = newErrorMessages;
             if (NodeDict[NodeSN].ErrorMessages.Count > 0) NodeDict[NodeSN].WarningFlag = true;
             else NodeDict[NodeSN].WarningFlag = false;
@@ -44,11 +50,24 @@ namespace HMS_NodeBridge
             NodeDict[NodeSN].InactiveFlag = newInactiveFlag;
             NodeDict[NodeSN].HighLimit = newHighLimit;
             NodeDict[NodeSN].LowLimit = newLowLimit;
+            NodeDict[NodeSN].HighLimit2 = newHighLimit2;
+            NodeDict[NodeSN].LowLimit2 = newLowLimit2;
+            NodeDict[NodeSN].HighLimit3 = newHighLimit3;
+            NodeDict[NodeSN].LowLimit3 = newLowLimit3;
         }
 
-        public static void updateNodeData(List<double[]> Data, int NodeSN)
+        public static void updateNodeData(double[] Data, int NodeSN)
         {
-            NodeDict[NodeSN].Data = Data;
+            //double[] newData = new double[2];
+            //newData = Data;
+
+            double[] SpecificData = new double[3];
+            SpecificData[0] = Data[0];
+            SpecificData[1] = Data[1];
+            SpecificData[2] = NodeDict[NodeSN].PanelNum - 1;
+
+            NodeDict[NodeSN].Data.Add(Data);            
+            NodeBridge.ListToGraph.Add(SpecificData);
         }
 
         public class Node
@@ -59,7 +78,11 @@ namespace HMS_NodeBridge
             public string NodeName { get; set; }
             public int? BatteryLevel { get; set; }
 
+            //Lists contain Data, Timestamp
             public List<double[]> Data { get; set; }
+            public List<double[]> Data2 { get; set; }
+            public List<double[]> Data3 { get; set; }
+
             public List<ErrorMsg> ErrorMessages { get; set; }
             public List<DataType> DataTypes { get; set; }
 
@@ -67,8 +90,12 @@ namespace HMS_NodeBridge
             public bool InactiveFlag { get; set; }
             public bool WarningFlag { get; set; }
 
-            public int HighLimit { get; set; }
-            public int LowLimit { get; set; }
+            public int? HighLimit { get; set; }
+            public int? LowLimit { get; set; }
+            public int? HighLimit2 { get; set; }
+            public int? LowLimit2 { get; set; }
+            public int? HighLimit3 { get; set; }
+            public int? LowLimit3 { get; set; }
 
             public Node(int InitSN)
             {
@@ -78,6 +105,9 @@ namespace HMS_NodeBridge
                 BatteryLevel = 0;
 
                 Data = new List<double[]>();
+                Data2 = new List<double[]>();
+                Data3 = new List<double[]>();
+
                 ErrorMessages = new List<ErrorMsg>();
                 DataTypes = new List<DataType>();
 
@@ -87,6 +117,10 @@ namespace HMS_NodeBridge
 
                 HighLimit = 100;
                 LowLimit = -100;
+                HighLimit2 = 100;
+                LowLimit2 = -100;
+                HighLimit3 = 100;
+                LowLimit3 = -100;
             }
         }
     }
