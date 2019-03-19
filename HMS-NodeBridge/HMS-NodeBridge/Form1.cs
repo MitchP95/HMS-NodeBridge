@@ -762,5 +762,20 @@ namespace HMS_NodeBridge
         {
 
         }
+
+        private void BT_NodePage_Click(object sender, EventArgs e)
+        {
+            tabControl_HMS.SelectedIndex = 0;
+        }
+
+        private void BT_GraphPage_Click(object sender, EventArgs e)
+        {
+            tabControl_HMS.SelectedIndex = 2;
+        }
+
+        private void BT_SettingsPage_Click(object sender, EventArgs e)
+        {
+            tabControl_HMS.SelectedIndex = 3;
+        }
     }
 }
