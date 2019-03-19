@@ -63,6 +63,16 @@ namespace HMS_NodeBridge.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _3080bf6b9d {
+            get {
+                object obj = ResourceManager.GetObject("3080bf6b9d", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _45050754_abstract_background_light_red_color {
             get {
                 object obj = ResourceManager.GetObject("45050754-abstract-background-light-red-color", resourceCulture);
@@ -113,9 +123,49 @@ namespace HMS_NodeBridge.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap binary_icon_11870 {
+            get {
+                object obj = ResourceManager.GetObject("binary-icon-11870", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap digital_water_bkp5ok_zs__F0000 {
             get {
                 object obj = ResourceManager.GetObject("digital-water_bkp5ok-zs__F0000", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon {
+            get {
+                object obj = ResourceManager.GetObject("icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_spanner_216410 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_spanner_216410", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_spanner_2164101 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_spanner_2164101", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

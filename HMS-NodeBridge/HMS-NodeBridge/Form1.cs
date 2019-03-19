@@ -359,15 +359,15 @@ namespace HMS_NodeBridge
                 {
                     double[] DEMO_Data = new double[2];
 
-                    double R = random.Next(-4, 4);
+                    double R = random.Next(-2, 2);
                     Thread.Sleep(1);
 
                     DEMO_Data[0] = 20 + R;
                     DEMO_Data[1] = stopwatch.ElapsedMilliseconds;
 
-                    NM.updateNodeData(DEMO_Data, node.Key);
+                    if(DEMO_Data[1] < 600000) NM.updateNodeData(DEMO_Data, node.Key);
 
-                    Thread.Sleep(1000);
+                    Thread.Sleep(3000);
                 }
                 
                 //Thread.Sleep(1000);
@@ -502,20 +502,265 @@ namespace HMS_NodeBridge
                     if (CB_Graph_SeriesOption.Text == "Single Series") CartesianChart_Data.Series[0].Values.Add(new ObservablePoint(data[1], data[0]));
                     else if (CB_Graph_SeriesOption.Text == "Seperate Series")
                     {
-                        if (data[2] == 0) { CartesianChart_Data.Series[0].Values.Add(new ObservablePoint(data[1], data[0]));  }
-                        else if (data[2] == 1) { CartesianChart_Data.Series[1].Values.Add(new ObservablePoint(data[1], data[0]));  }
-                        else if (data[2] == 2) { CartesianChart_Data.Series[2].Values.Add(new ObservablePoint(data[1], data[0]));  }
+                        if (data[2] == 0) { CartesianChart_Data.Series[0].Values.Add(new ObservablePoint(data[1], data[0] + 4));  }
+                        else if (data[2] == 1) { CartesianChart_Data.Series[1].Values.Add(new ObservablePoint(data[1], data[0] - 3));  }
+                        else if (data[2] == 2) { CartesianChart_Data.Series[2].Values.Add(new ObservablePoint(data[1], data[0] + 1));  }
                     }
                 }
                 
-                if (ListToGraph[0][1] > 10000)
+                if (ListToGraph[0][1] > 20000)
                 {
                     GraphRange = ListToGraph[0][1];
                     CartesianChart_Data.AxisX[0].MaxValue = GraphRange;
-                    CartesianChart_Data.AxisX[0].MinValue = GraphRange - 10000;
+                    CartesianChart_Data.AxisX[0].MinValue = GraphRange - 20000;
                 }
                 ListToGraph.Clear();
             }
+        }
+
+        private void CB_Graph_SeriesOption_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Initialize_GraphicalUpdate();
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void P_MainNMPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void BT_ConnectDataHub_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nodeFlowLayoutPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LB_Main_SN_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LB_Main_WarnS3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LB_Main_WarnS1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LB_Main_Battery_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LB_Main_SensorTypes_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BT_Main_EditWarnPar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LB_Main_NodeName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LB_Main_WarnS2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel7_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void CartesianChart_Data_ChildChanged(object sender, System.Windows.Forms.Integration.ChildChangedEventArgs e)
+        {
+
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CB_Graph_Style_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CB_Graph_DataSource_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void splitter2_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
+
+        private void tabPage4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TEST_RTB_ReceivedMsg_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TEST_RTB_MessagetoSend_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TEST_TB_InputIP_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HiddenBGPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

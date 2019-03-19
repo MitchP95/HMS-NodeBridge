@@ -127,8 +127,13 @@
     <None Include="Resources\45050754-abstract-background-light-red-color.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\iconfinder_spanner_2164101.png" />
+    <None Include="Resources\iconfinder_spanner_216410.png" />
+    <None Include="Resources\3080bf6b9d.png" />
     <Content Include="Resources\abstract-background-with-a-watercolor-texture_1048-2144.jpg" />
+    <None Include="Resources\binary-icon-11870.png" />
     <Content Include="Resources\digital-water_bkp5ok-zs__F0000.png" />
+    <None Include="Resources\icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
